@@ -32,6 +32,7 @@ func gormConnect() *gorm.DB {
 func dbInit() {
 	db := gormConnect()
 
+	// 遅延させる。つまり関数の一番最後にDBとの接続を解除し、マイグレートすると言うこと
 	defer db.Close()
 	db.AutoMigrate(&Tweet{})
 }
